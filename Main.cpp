@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-
+//PARA COMPILAR NCURSES g++ Main.cpp -lncurses -o main
 using namespace std;
 
 int main(int argc, char** argv){
