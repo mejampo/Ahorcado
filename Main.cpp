@@ -13,10 +13,11 @@ using namespace std;
 int startx = 0;
 int starty = 0;
 
-char *choices[] = { "FACIL","MEDIO","DIFICIL","Exit",};
+char *choices[] = { "FACIL","MEDIO","DIFICIL","Exit"};
 
 int n_choices = sizeof(choices) / sizeof(char *);
 void print_menu(WINDOW *menu_win, int highlight);
+
 
 int main(int argc, char** argv){
 
@@ -25,7 +26,7 @@ int main(int argc, char** argv){
 	int opc;
 	int ch;
 
-WINDOW *menu_win;
+ 	WINDOW *menu_win;
 	int highlight = 1;
 	int choice = 0;
 	int c;
@@ -39,7 +40,7 @@ WINDOW *menu_win;
 		
 	menu_win = newwin(HEIGHT, WIDTH, starty, startx);
 	keypad(menu_win, TRUE);
-	mvprintw(0, 0, "Use arrow keys to go up and down, Press enter to select a choice");
+	mvprintw(0, 0, "USE LAS FLECHAS PARA SELECCIONAR, PRESIONE ENTER PARA ELEGIR");
 	refresh();
 	print_menu(menu_win, highlight);
 	while(1)
@@ -61,26 +62,56 @@ WINDOW *menu_win;
 				choice = highlight;
 				break;
 			default:
-				mvprintw(24, 0, "Charcter pressed is = %3d Hopefully it can be printed as '%c'", c, c);
-				refresh();
+
 				break;
 		}
+
 		print_menu(menu_win, highlight);
-		if(choice == 1){	//FACIL
-			
-		}else if(choice==2){//MEDIO
-
-		}else if(choice ==3){//DIFICIL
-
-		}
-
-
+		if(choice != 0)	/* User did a choice come out of the infinite loop */
 			break;
-		
 	}	
-	mvprintw(23, 0, "You chose choice %d with choice string %s\n", choice, choices[choice - 1]);
 	clrtoeol();
 	refresh();
+
+		if(choice == 1){	//FACIL
+			char ans[80];
+			initscr();
+			noecho();
+			bool gano= false;
+			int intentos=0;
+			printw("MODO FACIL");
+				do{
+
+					mvprintw(LINES-2,0,"Lleva ",intentos," intentos");
+
+				}while(gano==false);
+
+			/*getstr(ans);
+
+ 			mvprintw(LINES - 2, 0, "You Entered: %s", ans);*/
+
+ 			getch();
+ 			endwin();
+
+		}else if(choice==2){//MEDIO
+			char ans[80];
+			initscr();
+			noecho();
+			printw("MODO MEDIO");
+
+			getch();
+ 			endwin();
+
+		}else if(choice ==3){//DIFICIL
+			char ans[80];
+			initscr();
+			noecho();
+			printw("MODO DIFICIL");
+
+			getch();
+ 			endwin();
+
+		}
 	endwin();
 	return 0;
 }
@@ -105,3 +136,4 @@ void print_menu(WINDOW *menu_win, int highlight)
 	}
 	wrefresh(menu_win);
 }
+
