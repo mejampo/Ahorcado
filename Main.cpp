@@ -73,6 +73,7 @@ int main(int argc, char** argv){
 		}
 
 		if(difi==1){
+			bool acerto= false;
 			int x=0;
 			string word;
 			string guess;
@@ -99,35 +100,38 @@ int main(int argc, char** argv){
 					if(word[i]==guess[0]){
 						cout<<"HA ENCONTRADO UNA LETRA"<<endl;
 						espacios[i]=guess;
+						acerto=true;
 					}
 				}
+
 			}else if(guess.length()>=1){
 				if(word==guess){
 					gano=true;
-					break;
+					acerto=true;
 				}
-			}else{
-				cout<<"ESA LETRA NO SE ENCUENTRA EN LA PALABRA"<<endl;
-				errors--;
+
 			}
-				
-				if(intentos!=word.length()){
-					int lineas = 15/errors;
+					
+					if(acerto==false){
+						int lineas = 15/intentos;
 						for(int i=0;i<=lineas;i++){
 								cout<<hangman[i]<<endl;
 						}
-					}	
+						
+					}
 					cout<<endl;
 					for(int l=0;l<=espacios.size();l++){
 							cout<< espacios[l];
 					}
 					cout<<endl;
+
 				intentos--;
+				acerto=false;
 			}while(gano==false&&intentos!=0);
 		
 		}else if(difi==2){
 
-
+			bool acerto=false;
 			int x=0;
 			string word;
 			string guess;
@@ -154,34 +158,35 @@ int main(int argc, char** argv){
 					if(word[i]==guess[0]){
 						cout<<"HA ENCONTRADO UNA LETRA"<<endl;
 						espacios[i]=guess;
+						acerto=true;
 					}
 				}
 			}else if(guess.length()>=1){
 				if(word==guess){
 					gano=true;
-					break;
+					acerto=true;
 				}
-			}else{
-				cout<<"ESA LETRA NO SE ENCUENTRA EN LA PALABRA"<<endl;
-				errors--;
 			}
-				
-				if(intentos!=word.length()){
-						int lineas = 15/errors;
+				if(acerto==false){
+						int lineas = 15/intentos;
 						for(int i=0;i<=lineas;i++){
 								cout<<hangman[i]<<endl;
 						}
-					}	
+						
+					}
 					cout<<endl;
 					for(int l=0;l<=espacios.size();l++){
 							cout<< espacios[l];
 					}
 					cout<<endl;
+
 				intentos--;
+				acerto=false;
 			}while(gano==false&&intentos!=0);
 
 		}else if(difi==3){
 
+			bool acerto= false;
 			int x=0;
 			string word;
 			string guess;
@@ -193,7 +198,10 @@ int main(int argc, char** argv){
 			intentos= word.length();
 			errors=intentos;
 			vector<string> espacios;
-			cout<<"NIVEL FACIL"<<endl;
+			cout<<"NIVEL DIFICIL"<<endl;
+			if(errors>15){
+				errors=15;
+			}
 
 			for(int i=0;i<word.length();i++){
 				espacios.push_back("_");
@@ -208,31 +216,30 @@ int main(int argc, char** argv){
 					if(word[i]==guess[0]){
 						cout<<"HA ENCONTRADO UNA LETRA"<<endl;
 						espacios[i]=guess;
+						acerto=true;
 					}
 				}
 			}else if(guess.length()>=1){
 				if(word==guess){
 					gano=true;
-					break;
+					acerto=true;
 				}
-			}else{
-				cout<<"ESA LETRA NO SE ENCUENTRA EN LA PALABRA"<<endl;
-				errors--;
 			}
-				
-				if(intentos!=word.length()){
-
-						int lineas = 15/errors;
+				if(acerto==false){
+						int lineas = 15/intentos;
 						for(int i=0;i<=lineas;i++){
 								cout<<hangman[i]<<endl;
 						}
-					}	
+						
+					}
 					cout<<endl;
 					for(int l=0;l<=espacios.size();l++){
 							cout<< espacios[l];
 					}
 					cout<<endl;
+				
 				intentos--;
+				acerto=false;
 			}while(gano==false&&intentos!=0);
 
 		}
@@ -247,6 +254,9 @@ int main(int argc, char** argv){
 		cout<<"Desea jugar de nuevo? \nSI=1\nNO=0"<<endl;
 		cin>>resp;
 	}while (resp!=0);
+
+	cout<<"USTED GANO "<<ganado<<" VECES"<<endl;
+	cout<<"USTED PERDIO "<<perdido<<" VECES"<<endl;
 
 	return 0;
 }
