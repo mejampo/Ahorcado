@@ -1,0 +1,10 @@
+carro
+gato
+perro
+leon
+libro
+abeja
+celda
+debut
+arbol
+azul
