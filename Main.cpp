@@ -66,7 +66,7 @@ int main(int argc, char** argv){
 	do{
 		int difi;
 		cout<<"*********JUEGO DEL AHORCADO*********"<<endl;
-		cout<<"-----EN QUE DIFICULTAD DESEA JUGAR?-----\n1.- FACIL\n2.-MEDIO\n3.-DIFICIL"<<endl;
+		cout<<"-----EN QUE DIFICULTAD DESEA JUGAR?-----\n1.-FACIL\n2.-MEDIO\n3.-DIFICIL"<<endl;
 		cin>>difi;
 
 		while(difi!=1&&difi!=2&&difi!=3){
@@ -253,6 +253,7 @@ int main(int argc, char** argv){
 					cout<<"PERDIO ESTA VEZ"<<endl;
 					perdido++;
 				}
+		gano=false;
 		cout<<"Desea jugar de nuevo? \nSI=1\nNO=0"<<endl;
 		cin>>resp;
 	}while (resp!=0);
