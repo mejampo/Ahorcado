@@ -1,12 +1,11 @@
 #include <iostream>
-#include <ncurses.h>
 #include <cstdlib>
 #include <ctime>
 #include <string>
 #include <fstream>
 #include <string>
 #include <vector>
-#include <iomanip>
+
 
 using namespace std;
 int main(int argc, char** argv){
@@ -40,22 +39,25 @@ int main(int argc, char** argv){
 	//LLENA VECTORS CON LAS PALABRAS
    		ifstream fe("FACIL.txt"); 
 	   while(!fe.eof()) {
-	   	fe >> meter;
-   		facil.push_back(meter);
+	   		fe >> meter;
+   			facil.push_back(meter);
+   			meter="";
  	 	 }
   		 fe.close();
 
   		 ifstream fe2("MEDIO.txt"); 
 	   while(!fe2.eof()) {
-	   	fe2 >> meter;
-   		medio.push_back(meter);
+	   		fe2 >> meter;
+   			medio.push_back(meter);
+   			meter="";
  	 	 }
   		 fe.close();
 
   		 ifstream fe3("DIFICIL.txt"); 
 	   while(!fe3.eof()) {
-	   	fe3 >> meter;
-   		dificil.push_back(meter);
+	   		fe3 >> meter;
+   			dificil.push_back(meter);
+   			meter="";
  	 	 }
   		 fe.close();
   	// TERMINA DE ABRIR ARCHIVOS
